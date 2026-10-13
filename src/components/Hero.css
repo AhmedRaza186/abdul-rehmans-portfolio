@@ -1,0 +1,388 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  padding: 2.5rem 0 3.25rem;
+  background-color: var(--color-canvas);
+  overflow: hidden;
+  transition: background-color 0.25s ease;
+}
+
+.hero-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(320px, 0.72fr);
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Left Content Column */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-serif);
+  margin-bottom: 1rem;
+}
+
+.hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-burnt-orange);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Dominant Headline: 80-100px on wide desktop */
+.hero-headline {
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 5.5vw, 5.25rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+  margin-bottom: 1.35rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-headline-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+
+.hero-headline-line {
+  display: block;
+  will-change: transform, opacity;
+}
+
+.hero-headline-lead {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--color-text);
+}
+
+.hero-headline-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em;
+  line-height: 0.95;
+  color: var(--color-accent-serif);
+  display: inline-block;
+}
+
+.hero-bio {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 32rem;
+  margin-bottom: 1.65rem;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform var(--duration-hover) var(--ease-editorial);
+}
+
+.btn-primary:hover .btn-arrow,
+.btn-primary:focus-visible .btn-arrow {
+  transform: translate(3px, -3px);
+}
+
+.hero-location {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  margin: 0;
+}
+
+/* Right Portrait Column with Perspective Container */
+.hero-portrait-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  perspective: 900px;
+}
+
+.hero-portrait-frame {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 420px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  cursor: default;
+}
+
+.hero-portrait-entrance {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 1. Backdrop: rectangular card with olive background and soft orange spotlight */
+.hero-breakout-backdrop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 135px; /* Upper edge sits around shoulder level so head and upper shoulders break out */
+  background: radial-gradient(circle at 50% 28%, rgba(216, 102, 53, 0.32) 0%, rgba(36, 51, 34, 0.98) 72%), #243322;
+  border: 1px solid rgba(36, 51, 34, 0.22);
+  border-radius: 4px;
+  box-shadow:
+    0 16px 36px rgba(25, 28, 24, 0.12),
+    0 2px 8px rgba(25, 28, 24, 0.05);
+  z-index: 1;
+}
+
+/* 2. Clipper: neatly clips lower body at bottom edge while upper silhouette overflows freely */
+.hero-breakout-clipper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 2;
+  overflow: visible;
+  clip-path: inset(-150px 0px 0px 0px round 0px 0px 4px 4px);
+}
+
+/* 3. Transparent Cutout Image */
+.hero-breakout-img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 388px;
+  max-width: none;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  /* Subtle drop shadow behind the upper silhouette for authentic depth */
+  filter: drop-shadow(0 8px 18px rgba(20, 24, 18, 0.2));
+}
+
+/* Mobile Decorative Background Portrait (hidden on desktop) */
+.hero-mobile-bg {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1080px) {
+  .hero-container {
+    gap: 2rem;
+    grid-template-columns: minmax(0, 1.22fr) minmax(290px, 0.78fr);
+  }
+
+  .hero-headline {
+    font-size: clamp(2.5rem, 4.8vw, 4.25rem);
+  }
+
+  .hero-portrait-frame {
+    max-width: 310px;
+    height: 380px;
+  }
+
+  .hero-breakout-backdrop {
+    top: 120px;
+  }
+
+  .hero-breakout-img {
+    width: 345px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-section {
+    padding: 2.75rem 0 3.25rem;
+    height: auto;
+    min-height: auto;
+  }
+
+  /* Remove desktop portrait block on mobile */
+  .hero-portrait-wrapper {
+    display: none !important;
+  }
+
+  /* Reveal decorative blurred background person cutout */
+  .hero-mobile-bg {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-mobile-bg-motion {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .hero-mobile-bg-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0.5rem;
+    width: clamp(340px, 86vw, 480px);
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.35; /* Visibly recognisable ~0.35 opacity */
+    filter: blur(1.5px); /* Restrained 1-2px blur */
+    pointer-events: none;
+    /* Fade only the lower edge of the portrait naturally */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0.45) 84%, transparent 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0.45) 84%, transparent 100%);
+  }
+
+  .hero-mobile-bg-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* Light/dark tuned overlay ensuring text contrast without hiding the centered portrait */
+    background: var(--color-hero-overlay);
+    transition: background 0.25s ease;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 1.5rem;
+  }
+
+  .hero-content {
+    max-width: 38rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.35rem, 6.8vw, 3.5rem);
+    line-height: 1.08;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-bio {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 32rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions .btn {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-section {
+    padding: 2rem 0 2.75rem;
+  }
+
+  .hero-container {
+    padding: 0 1.25rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.15rem, 8.8vw, 2.75rem);
+    line-height: 1.1;
+    margin-bottom: 1.125rem;
+  }
+
+  .hero-bio {
+    font-size: 1rem;
+    line-height: 1.58;
+    margin-bottom: 1.35rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .hero-mobile-bg-img {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0.25rem;
+    width: clamp(310px, 92vw, 400px);
+    opacity: 0.35;
+    filter: blur(1.5px);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0.45) 84%, transparent 100%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0.45) 84%, transparent 100%);
+  }
+
+  .hero-mobile-bg-overlay {
+    background: var(--color-hero-overlay);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-frame {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .hero-mobile-bg,
+  .hero-mobile-bg-motion {
+    opacity: 1 !important;
+  }
+}

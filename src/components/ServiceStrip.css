@@ -1,0 +1,195 @@
+.service-strip-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-strip-bg);
+  color: var(--color-strip-text);
+  padding: 2.25rem 0;
+  overflow: hidden;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 64px;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.service-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  outline: none;
+}
+
+.service-marquee-wrapper:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: -2px;
+}
+
+.service-marquee-content {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: serviceMarquee 36s linear infinite;
+}
+
+.service-marquee-wrapper:hover .service-marquee-content,
+.service-marquee-wrapper:focus-within .service-marquee-content,
+.service-marquee-content.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes serviceMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.service-strip-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.service-strip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 1rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.service-text {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-strip-text);
+  transition: color var(--duration-hover) var(--ease-editorial);
+  white-space: nowrap;
+}
+
+.service-mark {
+  color: var(--color-burnt-orange);
+  font-size: 0.875rem;
+  line-height: 1;
+  display: inline-block;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+/* Pause/Resume button */
+.service-marquee-toggle {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-hover) var(--ease-editorial),
+    border-color var(--duration-hover) var(--ease-editorial),
+    color var(--duration-hover) var(--ease-editorial),
+    transform var(--duration-hover) var(--ease-editorial);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.service-marquee-toggle:hover {
+  background-color: var(--color-burnt-orange);
+  border-color: var(--color-burnt-orange);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.service-marquee-toggle:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: 3px;
+}
+
+/* Mobile: single-line continuous marquee matching desktop */
+@media (max-width: 768px) {
+  .service-strip-section {
+    padding: 1.35rem 0; /* Comfortable vertical padding around 21-22px */
+  }
+
+  .service-marquee-content {
+    animation-duration: 28s; /* Calm, consistent linear movement */
+  }
+
+  .service-strip-item {
+    gap: 1.25rem;
+    padding: 0 0.625rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .service-text {
+    font-size: 0.9375rem; /* ~15px, within 14-16px */
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .service-mark {
+    font-size: 0.75rem;
+  }
+
+  .service-marquee-toggle {
+    right: 0.75rem;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Reduced Motion: static wrapped layout with no animation */
+@media (prefers-reduced-motion: reduce) {
+  .service-strip-section {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .service-marquee-toggle {
+    display: none !important;
+  }
+
+  .service-marquee-content {
+    animation: none !important;
+    width: 100% !important;
+    transform: none !important;
+    justify-content: center;
+  }
+
+  .service-strip-list {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.875rem 1.5rem;
+    white-space: normal;
+  }
+
+  .service-strip-list[aria-hidden="true"] {
+    display: none !important;
+  }
+
+  .service-strip-item {
+    gap: 1.25rem;
+    padding: 0;
+    flex-shrink: 1;
+    white-space: normal;
+  }
+
+  .service-text {
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+  }
+}

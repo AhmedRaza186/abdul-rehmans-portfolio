@@ -1,0 +1,293 @@
+.navbar-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.25s ease, border-color var(--duration-hover) var(--ease-editorial);
+}
+
+.navbar-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0.875rem var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-wordmark {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: baseline;
+  transition: opacity var(--duration-hover) var(--ease-editorial);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar-wordmark:hover {
+  opacity: 0.8;
+}
+
+.navbar-dot {
+  color: var(--color-burnt-orange);
+  font-weight: 800;
+  margin-left: 1px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.navbar-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 1.25rem;
+}
+
+.navbar-link {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.25rem 0.125rem;
+  position: relative;
+  transition: color var(--duration-hover) var(--ease-editorial);
+}
+
+.navbar-link:hover {
+  color: var(--color-burnt-orange);
+}
+
+.navbar-link:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Header Actions (Theme Toggle + CTA / Toggle) */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Accessible Theme Toggle (Sun / Moon) */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-hover) var(--ease-editorial),
+    border-color var(--duration-hover) var(--ease-editorial),
+    color var(--duration-hover) var(--ease-editorial),
+    transform var(--duration-hover) var(--ease-editorial);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-burnt-orange);
+  color: var(--color-burnt-orange);
+  transform: scale(1.04);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  display: block;
+}
+
+/* Mobile Toggle Hamburger Button */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  margin-right: -0.35rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 3px;
+  transition: background-color var(--duration-hover) var(--ease-editorial);
+}
+
+.navbar-toggle:hover {
+  background-color: var(--color-surface);
+}
+
+.navbar-toggle:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: 2px;
+}
+
+.navbar-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 1px;
+  transition: transform 0.25s var(--ease-editorial), opacity 0.2s ease, background-color 0.25s ease;
+  transform-origin: center;
+}
+
+.navbar-toggle.is-open .navbar-toggle-bar-1 {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle.is-open .navbar-toggle-bar-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar-toggle.is-open .navbar-toggle-bar-3 {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Drawer */
+.navbar-mobile-drawer {
+  position: fixed;
+  top: var(--navbar-height, 56px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar-mobile-drawer.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(19, 22, 19, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.navbar-mobile-panel {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.5rem 1.25rem 2rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  transform: translateY(-8px);
+  transition: transform 0.25s var(--ease-editorial), background-color 0.25s ease;
+}
+
+.navbar-mobile-drawer.is-open .navbar-mobile-panel {
+  transform: translateY(0);
+}
+
+.navbar-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.navbar-mobile-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-mobile-link {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: color var(--duration-hover) var(--ease-editorial);
+}
+
+.navbar-mobile-link:hover {
+  color: var(--color-burnt-orange);
+}
+
+.navbar-mobile-link:focus-visible {
+  outline: 2px solid var(--color-burnt-orange);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.navbar-mobile-action {
+  padding-top: 0.25rem;
+}
+
+.navbar-mobile-btn {
+  width: 100%;
+  padding: 0.9375rem 1.5rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .navbar-wordmark {
+    font-size: clamp(0.9375rem, 4.4vw, 1.0625rem);
+    white-space: nowrap;
+  }
+
+  .navbar-desktop-nav,
+  .navbar-desktop-cta {
+    display: none !important;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-mobile-drawer {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-toggle-bar,
+  .navbar-mobile-drawer,
+  .navbar-mobile-panel {
+    transition: none !important;
+    transform: none !important;
+  }
+}

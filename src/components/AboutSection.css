@@ -1,0 +1,244 @@
+.about-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-canvas);
+  padding: 5.5rem 0 6rem;
+  scroll-margin-top: var(--navbar-height, 64px);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.25s ease;
+}
+
+.about-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Editorial Two-Column Grid: Wide Intro on Left, Compact Experience/Education on Right */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4.5rem;
+  align-items: start;
+}
+
+/* Left Column: Focused Editorial Introduction */
+.about-intro-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-serif);
+  margin-bottom: 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-burnt-orange);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.about-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2.25rem, 3.4vw, 3.125rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-heading-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em;
+  line-height: 0.98;
+  color: var(--color-accent-serif);
+  margin-top: 0.15rem;
+  display: inline-block;
+}
+
+.about-narrative {
+  display: flex;
+  flex-direction: column;
+  max-width: 32rem;
+}
+
+.about-lead-text {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.68;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Right Column: Compact Experience & Education */
+.about-experience-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-record-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-education-group {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.about-group-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.about-group-title {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-serif);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.about-group-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.about-items-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-item {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.about-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.about-item-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.1rem;
+}
+
+.about-item-date {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-burnt-orange);
+}
+
+.about-item-role {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.about-item-org {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent-serif);
+  margin: 0 0 0.2rem 0;
+}
+
+.about-item-desc {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .about-intro-col,
+  .about-experience-col {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 980px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 3.25rem;
+  }
+
+  .about-intro-col,
+  .about-narrative {
+    max-width: 100%;
+  }
+
+  .about-experience-col {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .about-section {
+    padding: 4rem 0 4.5rem;
+  }
+
+  .about-heading {
+    font-size: 2.125rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-lead-text {
+    font-size: 1.0625rem;
+  }
+
+  .about-education-group {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .about-item {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-item-role {
+    font-size: 1.0625rem;
+  }
+}

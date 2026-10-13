@@ -1,0 +1,341 @@
+.services-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-canvas);
+  padding: 6rem 0 7rem;
+  scroll-margin-top: var(--navbar-height, 64px);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.25s ease;
+}
+
+.services-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Asymmetric Two-Column Grid */
+.services-layout {
+  display: grid;
+  grid-template-columns: 0.36fr 0.64fr;
+  gap: 4.5rem;
+  align-items: start;
+}
+
+/* Left Column: Sticky Introduction */
+.services-intro-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) and (min-height: 700px) {
+  .services-intro-col {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+  }
+}
+
+.services-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-serif);
+  margin-bottom: 1.125rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.services-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-burnt-orange);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.services-heading {
+  font-family: var(--font-sans);
+  font-size: clamp(2.25rem, 3.4vw, 3.125rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.services-heading-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.1em;
+  line-height: 0.98;
+  color: var(--color-accent-serif);
+  margin-top: 0.15rem;
+  display: inline-block;
+}
+
+.services-intro {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin-bottom: 2.25rem;
+  max-width: 25rem;
+}
+
+.services-cta-btn {
+  padding: 0.875rem 1.625rem;
+  font-size: 0.9375rem;
+}
+
+/* Right Column: Vertically Stacked Service Panels */
+.services-panels-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.service-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.25rem 2.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  transition:
+    transform var(--duration-hover) var(--ease-editorial),
+    box-shadow var(--duration-hover) var(--ease-editorial),
+    border-color var(--duration-hover) var(--ease-editorial),
+    background-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-panel:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-burnt-orange);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Panel 1, 2, 4 subtle tonal nuances */
+.service-panel-light-alt {
+  background-color: var(--color-surface-alt);
+}
+
+/* Special Deep-Olive Panel for AI Automation */
+.service-panel-olive {
+  background-color: #1B291A;
+  border-color: rgba(216, 102, 53, 0.25);
+  color: #F5F2EA;
+}
+
+.service-panel-olive:hover {
+  border-color: var(--color-burnt-orange);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+}
+
+.service-panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.service-panel-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.service-panel-num {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-burnt-orange);
+}
+
+.service-panel-olive .service-panel-num {
+  color: #E2794D;
+}
+
+.service-panel-title {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.service-panel-olive .service-panel-title {
+  color: #F5F2EA;
+}
+
+.service-panel-desc {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+  max-width: 31rem;
+}
+
+.service-panel-olive .service-panel-desc {
+  color: rgba(245, 242, 234, 0.88);
+}
+
+/* Plain-text scope labels separated by dots */
+.service-panel-scope {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-text-subtle);
+  margin-top: 0.35rem;
+}
+
+.service-panel-olive .service-panel-scope {
+  color: rgba(245, 242, 234, 0.82);
+}
+
+/* Dark mode adaptions for custom SVG illustrations */
+[data-theme="dark"] .service-panel:not(.service-panel-olive) svg [stroke="#243322"] {
+  stroke: #EAE6DC;
+  stroke-opacity: 0.65;
+}
+
+[data-theme="dark"] .service-panel:not(.service-panel-olive) svg [fill="#243322"] {
+  fill: #EAE6DC;
+  fill-opacity: 0.65;
+}
+
+[data-theme="dark"] .service-panel:not(.service-panel-olive) svg rect[fill="#FAF8F3"] {
+  fill: #222921;
+}
+
+[data-theme="dark"] .service-panel:not(.service-panel-olive) svg rect[fill="#243322"][fill-opacity="0.12"] {
+  fill: #EAE6DC;
+  fill-opacity: 0.15;
+}
+
+/* Integrated Custom SVG Illustrations */
+.service-illustration-wrap {
+  width: 120px;
+  height: 96px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-illus-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Micro-animations on hover (trigger once and settle) */
+/* 1. Calendar active cell lift */
+.service-panel:hover .illus-cal-active {
+  transform: translateY(-3px);
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* 2. Ads audience ring expand */
+.service-panel:hover .illus-audience-ring {
+  transform: scale(1.1);
+  transform-origin: 60px 48px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* 3. Workflow node pulse */
+.service-panel:hover .illus-node-pulse {
+  transform: scale(1.15);
+  transform-origin: 60px 48px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* 4. Support bubble lift */
+.service-panel:hover .illus-bubble-reply {
+  transform: translateY(-3px);
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-panel:hover .illus-cal-active,
+  .service-panel:hover .illus-audience-ring,
+  .service-panel:hover .illus-node-pulse,
+  .service-panel:hover .illus-bubble-reply {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .services-layout {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .services-intro-col {
+    position: static !important;
+    max-width: 36rem;
+  }
+
+  .services-intro {
+    max-width: 100%;
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .services-section {
+    padding: 4rem 0 5rem;
+  }
+
+  .services-heading {
+    font-size: 2.125rem;
+  }
+
+  .service-panel {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 1.5rem;
+  }
+
+  .service-illustration-wrap {
+    width: 100px;
+    height: 80px;
+    order: -1;
+    align-self: flex-start;
+  }
+
+  .service-panel-title {
+    font-size: 1.35rem;
+  }
+
+  .service-panel-desc {
+    font-size: 0.9375rem;
+  }
+
+  .service-panel-scope {
+    font-size: 0.75rem;
+  }
+
+  .services-cta-btn {
+    width: 100%;
+  }
+}
